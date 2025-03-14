@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <style>
+    /* GENERAL */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #FFFFFF, #ffe4e1);
+      color: #333;
+      text-align: center;
+    }
+
+    blockquote {
+      font-style: italic;
+      color: #0038a8;
+      margin: 20px 0;
+      padding-left: 15px;
+      border-left: 4px solid #007bff;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: #003153;
+      color: #fff;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+/* HIDE LARGE SCREEN*/
+.menu-toggle {
+  display: none;
+  background: #003153;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+	/* MENU THING FOR SAMLL SCREENS */
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    background: #003153;
+  }
+
+  nav ul li {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 15px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+    /* DROPDOWN MENU */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #003153;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* HEADER WITH COLOR-CHANGING GRADIENT */
+    header {
+      padding: 40px;
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ff4f00, #ff9f00, #ffbf00, #ffb347, #ffa343, #ff4f00);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #003153;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* HISTORY SECTION */
+    .history {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .history h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .history p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* TABLE STYLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background: rgba(244, 244, 244, 0.8);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table th, table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+      background: rgba(10, 51, 74, 0.8);
+      color: #fff;
+      font-weight: bold;
+    }
+
+    table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    table tr:hover {
+      background: rgba(255, 248, 225, 0.9);
+    }
+
+    table td {
+      color: #5a3e36;
+    }
+
+    table td:last-child {
+      font-style: italic;
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      width: 23%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .product img:hover {
+      transform: scale(1.1);
+    }
+
+    .product h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .product p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .product .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #007bff;
+      margin-top: 10px;
+    }
+
+    .product button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .product button:hover {
+      background: #0056b3;
+    }
+
+    /* DETAILS POPUP */
+    .details-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .details-popup h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .details-popup p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .details-popup .allergens {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #ff4f00;
+    }
+	
+	.details-popup .alcohol {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #ff4f00;
+    }
+
+    .details-popup .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #003153;
+      color: #FFF;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .quick-links {
+      margin-top: 10px;
+    }
+
+    .quick-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .quick-links a:hover {
+      color: #007bff;
+    }
+
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #007bff;
+    }
+
+    .social-links i {
+      font-size: 1.2rem;
+    }
+
+    /* MAP CONTAINER */
+    .map-container {
+      margin: 40px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    /* BACK TO TOP BUTTON */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+ <!-- NAVIGATION -->
+  <nav>
+    <button class="menu-toggle">☰ Menu</button>
+
+    <ul>
+      <li class="dropdown">
+        <a href="file:///C:/Users/YraGeinna/Downloads/Project.html">Home</a>
+        <div class="dropdown-content">
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#history">History</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#owners">Owners</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#branches">Branches</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html">Flavors</a>
+        <div class="dropdown-content">
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#cosmopolitan">Cosmopolitan Flavors</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#asian">Asian Flavors</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#liquor">Liquor Flavors</a>
+        </div>
+      </li>
+      <li><a href="file:///C:/Users/YraGeinna/Downloads/wholesale.html">Wholesale</a></li>
+      <li><a href="file:///C:/Users/YraGeinna/Downloads/contacts.html">Contact Us</a></li>
+    </ul>
+  </nav>
+  <!-- HEADER -->
+  <header>
+    <h1>Welcome to</h1>
+    <img src="https://thesmartlocal.com/reviews/media/reviews/photos/original/4e/94/f4/_ude-1334683527.png" alt="Logo">
+    <p>Don't be alarmed. We only want to be the most kick-ass ice cream brand in the whole milky way!</p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+  
+      <h1>-----Flavors-----</h1> <br>
+
+  
+  
+  
+  
+  
+  
+  
+  	  <br><br>
+
+  
+  
+  
+    <!-- COSMOPOLITAN FLAVORS -->
+    <section>
+      <h2 id="cosmopolitan">Cosmopolitan Flavors</h2>
+      <div class="products">
+	  
+	  
+	  <br><br>	  <br><br>
+
+        <div class="product">
+          <img src="https://gimmerecipe.com/wp-content/uploads/elementor/thumbs/ice-cream-qp43jrf69g6afi3xhfo2k1eszsok2qjnua69ihslgc.webp" alt="Cookies n Cream" class="popup-image">
+          <h3>Cookies n Cream</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('cookies-cream')">More Details</button>
+        </div>
+
+        <div class="product">
+          <img src="https://sweetpeaskitchen.com/wp-content/uploads/2019/09/Sea-Salt-Caramel-Truffle-Ice-Cream1.jpg" alt="Caramel" class="popup-image">
+          <h3>Salted Caramel</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('salted-caramel')">More Details</button>
+        </div>
+
+        <div class="product">
+          <img src="https://www.carveyourcraving.com/wp-content/uploads/2021/06/chocolate-icecream-in-an-icecream-maker.jpg" alt="Chocolate" class="popup-image">
+          <h3>Awesomely Chocolate</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('chocolate')">More Details</button>
+        </div>
+		
+		
+        <div class="product">
+          <img src="https://www.thegunnysack.com/wp-content/uploads/2023/05/Biscoff-Ice-Cream-SQ.jpg" alt="speculoos" class="popup-image">
+          <h3>Salted Speculoos</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('speculoos')">More Details</button>
+        </div>
+		
+		
+        <div class="product">
+          <img src="https://www.siftandsimmer.com/wp-content/uploads/2020/06/no-churn-earl-grey-ice-cream4-500x375.jpg" alt="earl" class="popup-image">
+          <h3>Earl Grey</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('earl')">More Details</button>
+        </div>
+		
+		  <div class="product">
+          <img src="https://nutritionrefined.com/wp-content/uploads/2018/07/vegan-vanilla-ice-cream-featured.jpg" alt="vanilla" class="popup-image">
+          <h3>Vanilla Bean</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('vanilla')">More Details</button>
+        </div>
+		
+		  <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5WC_z2su2jJJpXcQPtiVBeQb6utqo8pDS6g&s" alt="peanut" class="popup-image">
+          <h3>Peanut Butter Crunch</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('peanut')">More Details</button>
+        </div>
+		
+		
+      </div>
+    </section>
+
+
+
+
+
+
+
+	  <br><br>	  <br><br>
+
+
+
+
+
+    <!-- ASIAN FLAVORS -->
+    <section>
+	
+      <h2 id="asian">Asian Flavors</h2>
+      <div class="products">
+       	  <br><br>	  <br><br>
+
+
+
+        <div class="product">
+          <img src="https://www.wandercooks.com/wp-content/uploads/2022/03/matcha-green-tea-ice-cream-6.jpg" alt="matcha" class="popup-image">
+          <h3>Kyoto Matcha</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('matcha')">More Details</button>
+        </div>
+		
+		
+		 <div class="product">
+          <img src="https://rachelcooksthai.com/wp-content/uploads/2022/08/Coconut-Ice-Cream-Big-11-500x375.jpg" alt="coconut" class="popup-image">
+          <h3>Botak Coconut Sherbet</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('coconut')">More Details</button>
+        </div>
+		
+		<div class="product">
+          <img src="https://bakewithshivesh.com/wp-content/uploads/2022/05/IMG_9492-scaled.jpg" alt="mango" class="popup-image">
+          <h3>Alphonso Mango Sherbet</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('mango')">More Details</button>
+        </div>
+		
+		<div class="product">
+          <img src="https://img.freepik.com/premium-photo/durian-ice-cream-with-sticky-rice-is-served-with-crispy-waffle-top-with-smooth-whipping-cream_477666-473.jpg" alt="mao" class="popup-image">
+          <h3>Mao Shan Wang</h3>
+          <p class="price">P200</p>
+          <button onclick="openDetails('mao')">More Details</button>
+        </div>
+
+		</section>
+
+
+	  <br><br>
+
+
+
+    <!-- LIQUOR FLAVORS -->
+    <section>
+      <h2 id="liquor">Liquor Flavors</h2>
+      <div class="products">
+	  	  <br><br>	  <br><br>
+
+
+        <div class="product">
+          <img src="https://www.supergoldenbakes.com/wordpress/wp-content/uploads/2018/06/Baileys_chocolate_ice_cream-2.jpg" alt="baileys" class="popup-image">
+          <h3>Baileys and Bourbon</h3>
+          <p class="price">P270</p>
+          <button onclick="openDetails('baileys')">More Details</button>
+        </div>
+
+        <div class="product">
+          <img src="https://i1.wp.com/www.certifiedpastryaficionado.com/wp-content/uploads/2020/07/Rum-Raisin-Ice-Cream_IMG_9149.jpg?fit=800%2C1200&ssl=1" alt="rum" class="popup-image">
+          <h3>Rum Rum Raisin</h3>
+          <p class="price">P270</p>
+          <button onclick="openDetails('rum')">More Details</button>
+        </div>
+		
+		  <div class="product">
+          <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/12/30/2d/orange-choc-bitters-triple.jpg" alt="orange" class="popup-image">
+          <h3>Orange Choc Bitters</h3>
+          <p class="price">P270</p>
+          <button onclick="openDetails('orange')">More Details</button>
+		          </div>
+
+
+
+		  <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MeHcP8RlYa1gsSUQ5nMmqcOqCI-sNHdnnQ&s" alt="tiramisu" class="popup-image">
+          <h3>Tira-Miss-U</h3>
+          <p class="price">P270</p>
+          <button onclick="openDetails('tiramisu')">More Details</button>
+		</div>
+
+
+
+		  <div class="product">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV98fojwFj3VlzyZqNaOYAOwuPnpJ4lRLkQA&s" alt="wine" class="popup-image">
+          <h3>Wineberries</h3>
+          <p class="price">P270</p>
+          <button onclick="openDetails('wine')">More Details</button>
+        </div>
+		
+		
+      </div>
+    </section>
+  </main>
+
+
+
+
+
+
+
+
+  <!-- DETAILS POPUPS -->
+  <div id="cookies-cream" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Cookies n Cream</h3>
+    <p>Rich and creamy ice cream with chunks of chocolate cookies.</p>
+    <p class="allergens">Allergens: soy, Gluten</p>
+  </div>
+
+  <div id="salted-caramel" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Salted Caramel</h3>
+    <p>Sweet caramel ice cream with a hint of sea salt.</p>
+    <p class="allergens">Allergens: Tree nuts</p>
+  </div>
+
+  <div id="chocolate" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Awesomely Chocolate</h3>
+    <p>Classic chocolate ice cream made with premium cocoa.</p>
+    <p class="allergens">Allergens: Soy</p>
+  </div>
+  <div id="speculoos" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Salted Speculoos</h3>
+    <p>A brown butter base interspersed with  chunks of Lotus Biscoff cookies and swirls of caramel</p>
+    <p class="allergens">Allergens: Soy, Gluten</p>
+  </div>
+
+ <div id="strawberry" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Strawberry Fields</h3>
+    <p>A refreshing blend of real strawberries, offering a sweet-tart balance with a smooth texture.</p>
+    <p class="allergens">Allergens: None</p>
+  </div>
+
+
+ <div id="earl" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Earl Grey</h3>
+    <p>Smooth, fragrant Earl Grey tea with a creamy finish.</p>
+    <p class="allergens">Allergens: None</p>
+  </div>
+  
+  
+ <div id="vanilla" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Vanilla Bean</h3>
+    <p>Rich, creamy vanilla with a smooth and classic taste</p>
+    <p class="allergens">Allergens: None</p>
+  </div>
+  
+  
+ <div id="peanut" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Peanut Butter Crunch</h3>
+    <p>Creamy peanut butter with a rich, nutty flavor.</p>
+    <p class="allergens">Allergens: Nuts, Soy</p>
+  </div>
+
+
+
+
+
+
+
+
+  <div id="matcha" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Kyoto Matcha</h3>
+    <p>Features green tea sourced directly from Kyoto, Japan, offering an authentic matcha experience</p>
+    <p class="allergens">Allergens: None</p>
+  </div>
+
+  <div id="coconut" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Botak Coconut Sherbet</h3>
+    <p>Creamy coconut with a light, tropical sweetness.</p>
+    <p class="allergens">Allergens: None</p>
+  </div>
+  
+   <div id="mango" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Alphonso Mango Sherbet</h3>
+    <p>Tangy, refreshing mango with a smooth, icy texture.</p>
+    <p class="allergens">Allergens: None</p>
+  </div>
+  
+   <div id="mao" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Mao Shan Wang</h3>
+    <p>Rich, creamy durian with a bold and intense flavor.</p>
+    <p class="allergens">Allergens: None</p>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <div id="baileys" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Baileys Ice Cream</h3>
+    <p>Rich and creamy ice cream infused with Baileys Irish Cream.</p>
+    <p class="allergens">Allergens: Soy</p>
+		 <p class="alcohol">Percentage: 3.3%</p>
+
+  </div>
+
+  <div id="rum" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Rum Raisin</h3>
+    <p>A rich blend of rum and raisins, containing 3.9% alcohol.</p>
+    <p class="allergens">Allergens: None</p>
+	 <p class="alcohol">Percentage: 3.9%</p>
+
+  </div>
+  
+  
+   <div id="orange" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Orange Choco Bitters</h3>
+    <p>Dark chocolate with zesty orange and a hint of bitters.</p>
+    <p class="allergens">Allergens: Soy</p>
+	 <p class="alcohol">Percentage: 2.7%</p>
+	  </div>
+ 
+	 
+	 
+	  <div id="tiramisu" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Tira-Miss-U</h3>
+    <p>Creamy tiramisu with a rich coffee and liqueur kick.</p>
+    <p class="allergens">Allergens: None</p>
+	 <p class="alcohol">Percentage: 3.8%</p>
+	 
+	   </div>
+
+	 
+	  <div id="wine" class="details-popup">
+    <span class="close" onclick="closeDetails()">×</span>
+    <h3>Wineberries</h3>
+    <p>Sweet berries infused with rich, velvety port wine</p>
+    <p class="allergens">Allergens: None</p>
+	 <p class="alcohol">Percentage: 3.5%</p>
+    </div>
+
+  
+
+   <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Udders Ice Cream. All rights reserved.</p>
+    <div class="quick-links">
+      <a href="#">Home</a>
+      <a href="#">Flavors</a>
+      <a href="#">Wholesale</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/uddersphilippines/" target="_blank">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="https://www.instagram.com/uddersicecream.ph/?hl=en" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <!-- JAVASCRIPT -->
+  <script>
+  document.querySelector(".menu-toggle").addEventListener("click", function () {
+    document.querySelector("nav ul").classList.toggle("show-menu");
+  });
+
+  // Additional CSS for when the menu is shown
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .show-menu {
+      display: flex !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+
+	
+	// Open Details Popup
+    function openDetails(id) {
+      document.getElementById(id).style.display = "block";
+    }
+
+    // Close Details Popup
+    function closeDetails() {
+      const popups = document.querySelectorAll('.details-popup');
+      popups.forEach(popup => {
+        popup.style.display = "none";
+      });
+    }
+
+    // Close Popup When Clicking Outside
+    window.onclick = function(event) {
+      const popups = document.querySelectorAll('.details-popup');
+      popups.forEach(popup => {
+        if (event.target === popup) {
+          popup.style.display = "none";
+        }
+      });
+    }
+
+    // Back to Top Functionality
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

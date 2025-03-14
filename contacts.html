@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts</title>
+  <style>
+
+
+
+/* GENERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #FFFFFF, #ffe4e1);
+  color: #333;
+  text-align: center;
+}
+
+blockquote {
+  font-style: italic;
+  color: #0038a8;
+  margin: 20px 0;
+  padding-left: 15px;
+  border-left: 4px solid #007bff;
+}
+
+/* NAVIGATION */
+nav {
+  background: #003153;
+  color: #fff;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* DROPDOWN MENU */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #003153;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+	
+	/* HIDE LARGE SCREEN*/
+.menu-toggle {
+  display: none;
+  background: #003153;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+
+	/* MENU THING FOR SAMLL SCREENS */
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    background: #003153;
+  }
+
+  nav ul li {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 15px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* HEADER WITH COLOR-CHANGING GRADIENT */
+header {
+  padding: 40px;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #ff4f00, #ff9f00, #ffbf00, #ffb347, #ffa343, #ff4f00);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #003153;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+
+header p {
+  font-size: 1.5rem;
+  color: #fff;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* CONTACT SECTION */
+.contact-section {
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  margin: 40px 0;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #003153;
+}
+
+.contact-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.contact-info div {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+  padding: 20px;
+  background: rgba(244, 244, 244, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #003153;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  color: #5a3e36;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #0056b3;
+}
+
+/* DELIVERY SECTION */
+.delivery-section {
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  margin: 40px 0;
+}
+
+.delivery-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #003153;
+}
+
+.delivery-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.delivery-partners {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.delivery-partners div {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+  padding: 20px;
+  background: rgba(244, 244, 244, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.delivery-partners img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.delivery-partners h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #003153;
+}
+
+.delivery-partners a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.delivery-partners a:hover {
+  background: #0056b3;
+}
+
+/* FOOTER */
+footer {
+  background: #003153;
+  color: #FFF;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.quick-links {
+  margin-top: 10px;
+}
+
+.quick-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.quick-links a:hover {
+  color: #007bff;
+}
+
+.social-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #007bff;
+}
+
+.social-links i {
+  font-size: 1.2rem;
+}
+/* CONTACT */
+form {
+  margin: 20px;
+  background: rgba(244, 244, 244, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #5a3e36; 
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #333;
+  outline: none;
+}
+
+form input[type="submit"], form input[type="reset"] {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+form input[type="submit"]:hover, form input[type="reset"]:hover {
+  background: #555;
+  transform: translateY(-2px); 
+}
+
+    /* FOOTER */
+    footer {
+      background: #003153 ;
+      color: #FFF ;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .quick-links {
+      margin-top: 10px;
+    }
+
+    .quick-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .quick-links a:hover {
+      color: #007bff;
+    }
+
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #007bff;
+    }
+
+    .social-links i {
+      font-size: 1.2rem;
+    }
+
+    /* MAP CONTAINER */
+    .map-container {
+      margin: 40px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      border-radius: 10px;
+    }
+	 /* BACK TO TOP BUTTON */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      background: #0056b3;
+    }
+
+</style>
+
+<body>
+ <!-- NAVIGATION -->
+  <nav>
+    <button class="menu-toggle">☰ Menu</button>
+
+    <ul>
+      <li class="dropdown">
+        <a href="file:///C:/Users/YraGeinna/Downloads/Project.html">Home</a>
+        <div class="dropdown-content">
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#history">History</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#owners">Owners</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#branches">Branches</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html">Flavors</a>
+        <div class="dropdown-content">
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#cosmopolitan">Cosmopolitan Flavors</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#asian">Asian Flavors</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#liquor">Liquor Flavors</a>
+        </div>
+      </li>
+      <li><a href="file:///C:/Users/YraGeinna/Downloads/wholesale.html">Wholesale</a></li>
+      <li><a href="file:///C:/Users/YraGeinna/Downloads/contacts.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+   <!-- HEADER -->
+  <header>
+    <h1>Welcome to:</h1>
+    <img src="https://thesmartlocal.com/reviews/media/reviews/photos/original/4e/94/f4/_ude-1334683527.png" alt="Logo" usemap="#Logo">
+    <p>Don't be alarmed. We only want to be the most kick-ass ice cream brand in the whole milky way!</p>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2>Get in Touch</h2>
+    <p>Whether you have a question, need assistance, or just want to say hello, we're here to help!</p>
+    <div class="contact-info">
+      <div>
+        <h3>Email Us</h3>
+        <p>Have a question? Drop us an email.</p>
+        <a href=" moo@udders.com.sg">moo@udders.com.sg</a>
+      </div>
+      <div>
+        <h3>Call Us</h3>
+        <p>Prefer to speak directly? Give us a call.</p>
+        <a href="tel:+65 6662 9410">+65 6662 9410</a>
+      </div>
+      <div>
+        <h3>Visit Us</h3>
+        <p>Come see us in person at our location.</p>
+        <p>7 Buroh Lane, Commonwealth Capital Building #06-03/04, Singapore 618291</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Delivery Section -->
+  <section class="delivery-section">
+    <h2>Order for Delivery</h2>
+    <p>We partner with the best delivery services to bring our food to your doorstep. Order now!</p>
+    <div class="delivery-partners">
+      <div>
+        <img src="https://ph-test-11.slatic.net/p/9a66c3f38bcbb5940d790d9fd58855ee.png" alt="Food Panda Logo">
+        <h3>Food Panda</h3>
+        <p>Order through Food Panda for quick and reliable delivery.</p>
+        <a href="https://www.foodpanda.sg/chain/ch8od/udders" target="_blank">Order Now</a>
+      </div>
+      <div>
+        <img src="https://static.wikia.nocookie.net/logopedia/images/c/c0/GrabFood_%282016%29.svg/revision/latest?cb=20210219083903" alt="Grab Logo">
+        <h3>Grab</h3>
+        <p>Get your favorite meals delivered with Grab.</p>
+        <a href="https://food.grab.com/sg/en/restaurant/udders-ice-cream-novena-delivery/SGDD01258" target="_blank">Order Now</a>
+      </div>
+    </div>
+  </section>
+  
+    <!-- FORM -->
+  <section class="form">
+	 <h2>Contact Form</h2>
+        <p>If you have any questions, feel free to contact us using the form below.</p>
+		
+		
+        <form action="submit_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="5" cols="40" required></textarea><br><br>
+
+            <label for="service">Service:</label>
+            <select id="service" name="service">
+                <option value="general">General Inquiry</option>
+                <option value="support">Customer Support</option>
+                <option value="sales">Sales</option>
+            </select><br><br>
+			 <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+  </section>
+
+ <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Udders Ice Cream. All rights reserved.</p>
+    <div class="quick-links">
+      <a href="#">Home</a>
+      <a href="#">Flavors</a>
+      <a href="#">Wholesale</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/uddersphilippines/" target="_blank">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="https://www.instagram.com/uddersicecream.ph/?hl=en" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </footer>
+	
+	  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+	
+	<script>
+	document.querySelector(".menu-toggle").addEventListener("click", function () {
+    document.querySelector("nav ul").classList.toggle("show-menu");
+  });
+
+  // ADDITIONAL
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .show-menu {
+      display: flex !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+	
+	// BACK TO TOP
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+	</script>
+	
+	
+  </footer>
+</body>

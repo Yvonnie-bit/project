@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wholesale Partnerships</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* GENERAL */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #FFFFFF, #ffe4e1);
+      color: #333;
+      text-align: center;
+    }
+
+    blockquote {
+      font-style: italic;
+      color: #0038a8;
+      margin: 20px 0;
+      padding-left: 15px;
+      border-left: 4px solid #007bff;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: #003153;
+      color: #fff;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* DROPDOWN MENU */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #003153;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+/* HIDE LARGE SCREEN*/
+.menu-toggle {
+  display: none;
+  background: #003153;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+/* MENU THING FOR SMALL SCREENS */
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    background: #003153;
+  }
+
+  nav ul li {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 15px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+    /* HEADER WITH COLOR-CHANGING GRADIENT */
+    header {
+      padding: 100px 20px;
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 40px;
+      background: linear-gradient(135deg, #ff4f00, #ff9f00, #ffbf00, #ffb347, #ffa343, #ff4f00);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #003153;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* WHOLESALE SECTION */
+    .wholesale-section {
+      padding: 60px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      margin: 40px auto;
+      max-width: 1200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .wholesale-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #003153;
+    }
+
+    .wholesale-section h1 {
+      font-size: 2rem;
+      margin: 30px 0 20px;
+      color: #003153;
+    }
+
+    .wholesale-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .partnership-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .partnership-logos img {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      object-fit: contain;
+    }
+
+    .partnership-logos img:hover {
+      transform: scale(1.1);
+    }
+
+    /* ADDITIONAL SECTION */
+	
+	
+    .additional-section {
+      padding: 60px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      margin: 40px 0;
+    }
+
+    .additional-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #003153;
+    }
+
+    .additional-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .additional-info {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .additional-info div {
+      flex: 1;
+      min-width: 250px;
+      margin: 10px;
+      padding: 20px;
+      background: rgba(244, 244, 244, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .additional-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #003153;
+    }
+
+    .additional-info p {
+      font-size: 1rem;
+      color: #5a3e36;
+    }
+ .additional-section img {
+      width: 100px; 
+      height: 100px;
+      object-fit: contain;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .additional-section img:hover {
+      transform: scale(1.1);
+    }
+    /* FOOTER */
+    footer {
+      background: #003153;
+      color: #FFF;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .quick-links {
+      margin-top: 20px;
+    }
+
+    .quick-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .quick-links a:hover {
+      color: #007bff;
+    }
+
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #007bff;
+    }
+
+    .social-links i {
+      font-size: 1.2rem;
+    }
+
+    /* BACK TO TOP BUTTON */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      background: #0056b3;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+      .wholesale-section h2 {
+        font-size: 2rem;
+      }
+      .wholesale-section h1 {
+        font-size: 1.8rem;
+      }
+      .additional-section h1 {
+        font-size: 2rem;
+      }
+      .partnership-logos img {
+        width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <button class="menu-toggle">☰ Menu</button>
+
+    <ul>
+      <li class="dropdown">
+        <a href="file:///C:/Users/YraGeinna/Downloads/Project.html">Home</a>
+        <div class="dropdown-content">
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#history">History</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#owners">Owners</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#branches">Branches</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html">Flavors</a>
+        <div class="dropdown-content">
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#cosmopolitan">Cosmopolitan Flavors</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#asian">Asian Flavors</a>
+          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#liquor">Liquor Flavors</a>
+        </div>
+      </li>
+      <li><a href="file:///C:/Users/YraGeinna/Downloads/wholesale.html">Wholesale</a></li>
+      <li><a href="file:///C:/Users/YraGeinna/Downloads/contacts.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Welcome to:</h1>
+    <img src="https://thesmartlocal.com/reviews/media/reviews/photos/original/4e/94/f4/_ude-1334683527.png" alt="Logo" usemap="#Logo">
+    <p>Don't be alarmed. We only want to be the most kick-ass ice cream brand in the whole milky way!</p>
+  </header>
+
+
+  <!-- WHOLESALE SECTION -->
+  <div class="wholesale-section">
+    <h2>Why Partner With Us?</h2>
+    <h1>WIDE PRODUCT SELECTION</h1>
+    <p>With a whoopin’ variety of over 100 delicious and unique flavours to choose from, you will be spoiled for choice.</p>
+    <p>From crowd-pleasers like Cookies & Cream, to unique local flavours like Singapore Chendol, to premium liqueur flavours, there’s something for everyone.</p>
+    <p>We have also created Nuude, our brand of healthier vegan-friendly ice creams.</p>
+
+    <h2>Our Partners</h2>
+    <div class="partnership-logos">
+      <img src="https://static.wixstatic.com/media/fcd8fd_2a88f1da00b040c384a6adbbd235a2b8~mv2.png/v1/fill/w_191,h_188,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Scoot.png" alt="Scoot Logo">
+      <img src="https://static.wixstatic.com/media/fcd8fd_ae81fd060e814933a4cc533d9781b306~mv2.png/v1/fill/w_342,h_96,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1280px-Jetstar_logo_svg.png" alt="Jetstar Logo">
+      <img src="https://static.wixstatic.com/media/fcd8fd_051e9d4b1e5141dd8704ba52fb98a5c2~mv2.png/v1/fill/w_416,h_167,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/SIA%20logo.png" alt="Singapore Airlines Logo">
+      <img src="https://static.wixstatic.com/media/fcd8fd_d459e2e75bac484b8418fc876edec0b1~mv2.png/v1/fill/w_270,h_125,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/disney%20logo.png" alt="Disney Logo">
+      <img src="https://static.wixstatic.com/media/fcd8fd_44b8ea397bc34b8db7f0a471414fddf0~mv2.png/v1/fill/w_216,h_188,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/starbucks.png" alt="Starbucks Logo">
+      <img src="https://static.wixstatic.com/media/fcd8fd_6416ea06de5c4ed2b40321ffb65c261a~mv2.png/v1/fill/w_279,h_188,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/PRIVE-CMYK.png" alt="Prive Logo">
+    </div>
+  </div>
+
+ <!-- ADDITIONAL SECTION -->
+  <section class="additional-section">
+    <div>
+      <h1>HONEST-TO-GOODNESS ICE CREAMS</h1>
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/009/589/471/small/home-icon-transparent-free-png.png" alt="Home logo">
+      <p>We source all the best ingredients from around the world but the magic happens locally in Singapore.</p>
+    </div>
+  </section>
+
+  <section class="additional-section">
+    <div>
+      <h1>STRINGENT FOOD SAFETY STANDARDS</h1>
+      <img src="https://cdn-icons-png.flaticon.com/512/79/79492.png" alt="Safety logo">
+      <p>With our stringent ISO 22000 food safety management system in place, the only foreign objects you will find in our ice cream are tears of happiness from your happy customers.</p>
+    </div>
+  </section>
+
+  <section class="additional-section">
+    <div>
+      <h1>COMPETITIVE PRICES</h1>
+      <img src="https://static.vecteezy.com/system/resources/previews/014/455/897/non_2x/money-icon-on-transparent-background-free-png.png" alt="Money logo">
+      <p>We are committed to supplying you with high-quality ice cream at reasonable prices.</p>
+    </div>
+  </section>
+
+  <section class="additional-section">
+    <div>
+      <h1>PRODUCT DIFFERENTIATION</h1>
+      <img src="https://www.freeiconspng.com/thumbs/handshake-icon/black-handshake-icon-20.png" alt="Handshake logo">
+      <p>Thinking of something wild, crazy, and fun? We are able to customize flavors to let you be a cut above the rest.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Udders Ice Cream. All rights reserved.</p>
+    <div class="quick-links">
+      <a href="#">Home</a>
+      <a href="#">Flavors</a>
+      <a href="#">Wholesale</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/uddersphilippines/" target="_blank">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="https://www.instagram.com/uddersicecream.ph/?hl=en" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <!-- JAVASCRIPT -->
+  <script>
+   document.querySelector(".menu-toggle").addEventListener("click", function () {
+    document.querySelector("nav ul").classList.toggle("show-menu");
+  });
+
+  // ADDITIONAL
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .show-menu {
+      display: flex !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+
+   // BACK TO TOP
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
