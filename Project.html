@@ -403,7 +403,7 @@ table td:last-child {
       font-size: 1.2rem;
     }
 
-    /* MAP CONTAINER */
+    /* MAP */
     .map-container {
       margin: 40px auto;
       max-width: 800px;
@@ -437,29 +437,34 @@ table td:last-child {
 </head>
 <body>
 
+
+  <!-- Y M C A -->
+
+
+	
   <!-- NAVIGATION -->
   <nav>
   <button class="menu-toggle">☰ Menu</button>
 
     <ul>
       <li class="dropdown">
-        <a href="file:///C:/Users/YraGeinna/Downloads/Project.html">Home</a>
+        <a href="https://yvonnie-bit.github.io/project/Project.html">Home</a>
         <div class="dropdown-content">
-          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#history">History</a>
-          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#owners">Owners</a>
-          <a href="file:///C:/Users/YraGeinna/Downloads/Project.html#branches">Branches</a>
+          <a href="https://yvonnie-bit.github.io/project/Project.html#history">History</a>
+          <a href="https://yvonnie-bit.github.io/project/Project.html#owners">Owners</a>
+          <a href="https://yvonnie-bit.github.io/project/Project.html#branches">Branches</a>
         </div>
       </li>
       <li class="dropdown">
-        <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html">Flavors</a>
+        <a href="https://yvonnie-bit.github.io/project/Menu.html">Flavors</a>
         <div class="dropdown-content">
-          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#cosmopolitan">Cosmopolitan Flavors</a>
-          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#asian">Asian Flavors</a>
-          <a href="file:///C:/Users/YraGeinna/Downloads/Menu.html#liquor">Liquor Flavors</a>
+          <a href="https://yvonnie-bit.github.io/project/Menu.html#cosmopolitan">Cosmopolitan Flavors</a>
+          <a href="https://yvonnie-bit.github.io/project/Menu.html#asian">Asian Flavors</a>
+          <a href="https://yvonnie-bit.github.io/project/Menu.html#liquor">Liquor Flavors</a>
         </div>
       </li>
-      <li><a href="file:///C:/Users/YraGeinna/Downloads/wholesale.html">Wholesale</a></li>
-      <li><a href="file:///C:/Users/YraGeinna/Downloads/contacts.html">Contact Us</a></li>
+      <li><a href="https://yvonnie-bit.github.io/project/wholesale.html">Wholesale</a></li>
+      <li><a href="https://yvonnie-bit.github.io/project/contacts.html">Contact Us</a></li>
     </ul>
   </nav>
 
@@ -614,10 +619,10 @@ table td:last-child {
   <footer>
     <p>&copy; 2025 Udders Ice Cream. All rights reserved.</p>
     <div class="quick-links">
-      <a href="#">Home</a>
-      <a href="#">Flavors</a>
-      <a href="#">Wholesale</a>
-      <a href="#">Contact</a>
+      <a href="#https://yvonnie-bit.github.io/project/Project">Home</a>
+      <a href="#https://yvonnie-bit.github.io/project/Menu">Flavors</a>
+      <a href="#https://yvonnie-bit.github.io/project/wholesale.html">Wholesale</a>
+      <a href="#https://yvonnie-bit.github.io/project/contacts.html">Contact</a>
     </div>
     <div class="social-links">
       <a href="https://www.facebook.com/uddersphilippines/" target="_blank">
@@ -640,7 +645,7 @@ table td:last-child {
     document.querySelector("nav ul").classList.toggle("show-menu");
   });
 
-  // Additional CSS for when the menu is shown
+  //MENUUUU
   const style = document.createElement("style");
   style.innerHTML = `
     .show-menu {
@@ -664,12 +669,12 @@ table td:last-child {
       currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
       showSlide(currentSlide);
     }
-    setInterval(nextSlide, 3000); // Auto-rotate every 3 seconds
+    setInterval(nextSlide, 3000); 
     showSlide(currentSlide);
 	
 	
 	
-	// Popup Functionality
+	// POPUP
     function openPopup(id) {
       document.getElementById(id).style.display = "block";
     }
@@ -677,7 +682,7 @@ table td:last-child {
     function closePopup(id) {
       document.getElementById(id).style.display = "none";
     }
-	 // Back to Top Functionality
+	 // BACK TO TOPPP
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
