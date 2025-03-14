@@ -862,12 +862,12 @@
 
 
 	
-	// Open Details Popup
+	// POPUP OPEN
     function openDetails(id) {
       document.getElementById(id).style.display = "block";
     }
 
-    // Close Details Popup
+    // POPUP CLOSE
     function closeDetails() {
       const popups = document.querySelectorAll('.details-popup');
       popups.forEach(popup => {
@@ -875,7 +875,7 @@
       });
     }
 
-    // Close Popup When Clicking Outside
+    // OTHER POPUP CLOSWE
     window.onclick = function(event) {
       const popups = document.querySelectorAll('.details-popup');
       popups.forEach(popup => {
@@ -885,7 +885,7 @@
       });
     }
 
-    // Back to Top Functionality
+    // BACK TO TOP
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
